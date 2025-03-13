@@ -7,9 +7,9 @@ config:
     full: true
     background: tint-plate
     hero:
-      name: Fumon's Blog       # 修改为你的博客名称
-      tagline: 探索技术与创意 # 个性化标语
-      text: 这里记录我的技术学习笔记、开发经验和生活感悟 # 博客简介
+      name: 幻想手记       # 修改为你的博客名称
+      tagline: 有关幻想与现实之事 # 个性化标语
+      text: 这里记录我的幻想，描述万物的现实 # 博客简介
       actions:
         -
           theme: brand
@@ -25,21 +25,17 @@ config:
     features:
       - 
         icon: 📚
-        title: 技术专栏
+        title: 技术分享
         details: 前端开发、Node.js、Python等技术实践
       - 
         icon: 🎨
-        title: 创意分享
-        details: 设计思考与创意实现
+        title: 博物考据
+        details: 天文地理，山川万物，考据不同文化的巧思
       - 
         icon: 💡
-        title: 学习笔记
-        details: 日常学习中的知识点记录
-  -
-    type: posts                # 添加最新文章展示
-    title: 最新文章
-    subtitle: 最近更新的技术文章
-    postsSize: 6
+        title: 灵感所托
+        details: 平淡日常的浮光掠影，亦可闪耀灵感的火苗
+
 ---
   name: 幻想手记
   tagline: 记录幻想与现实
