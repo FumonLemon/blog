@@ -1,0 +1,13 @@
+# Hugo 构建产物
+/public/
+/resources/
+.hugo_build.lock
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 系统
+.DS_Store
+Thumbs.db
