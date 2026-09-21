@@ -1,7 +1,6 @@
 baseURL: "https://blog.lemonfumo.top/"
+theme: "hugo-bearneo"
 title: "LemonFumo"
-paginate: 10
-theme: "PaperMod"
 locale: "zh-cn"
 defaultContentLanguage: "zh"
 
@@ -10,100 +9,53 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-minify:
-  disableXML: true
-  minifyOutput: true
+disableKinds: []
+ignoreErrors: ["error-disable-taxonomy"]
+
+permalinks:
+  page: "/:sections/:slug/"
 
 params:
-  env: production
   title: "LemonFumo"
   description: "记录学习、思考与写作。"
-  keywords: ["博客", "随笔", "技术"]
-  author: "LemonFumo"
+  favicon: "/logo.png"
+  images: ["/logo.png"]
+  copyright: "Copyright © 2026, LemonFumo."
+  dateFormat: "2006-01-02"
 
-  # 站点图标（放 static/ 下）
-  assets:
-    favicon: "/logo.png"
-    favicon16x16: "/logo.png"
-    favicon32x32: "/logo.png"
-    apple_touch_icon: "/logo.png"
+  groupByYear: false
+  showPostCount: false
+  postSearch: true
+  toc: true
+  imageZoom: true
+  externalLinksNewTab: true
 
-  # 顶栏左侧站名
-  label:
-    text: "LemonFumo"
-    icon: "/logo.png"
-    iconHeight: 35
+  upvote: false
 
-  # 首页个人介绍卡（homeInfoParams）
-  homeInfoParams:
-    Title: "你好，我是 LemonFumo"
-    Content: >
-      记录学习、思考与写作。
-
-  # 社交图标
-  socialIcons:
-    - name: github
-      url: "https://github.com/FumonLemon"
-    - name: email
-      url: "mailto:chat@fumolemon.com"
-    - name: rss
-      url: "/index.xml"
-
-  # 文章正文目录
-  ShowToc: true
-  TocOpen: false
-
-  # 主题外观：auto（跟随系统）/ light / dark
-  defaultTheme: auto
-  disableThemeToggle: false
-
-  # 文章列表显示
-  ShowReadingTime: true
-  ShowShareButtons: false
-  ShowPostNavLinks: true
-  ShowBreadCrumbs: true
-  ShowCodeCopyButtons: true
-  ShowWordCount: false
-  ShowRssButtonInSectionTermList: true
-  ShowFullTextinRSS: false
-
-  # 搜索
-  fuseOpts:
-    isCaseSensitive: false
-    shouldSort: true
-    location: 0
-    distance: 1000
-    threshold: 0.4
-    minMatchCharLength: 0
-    keys: ["title", "permalink", "summary", "content"]
-
-  # 页脚
   footer:
     hideCopyright: false
+    hideSitemap: false
+    hideMadeWithLine: false
+    hideRSSAndEmail: false
 
-# 主要 section（列表页聚合哪些内容）
+  RSS:
+    enableRSS: true
+    pageLimit: 20
+
+  author:
+    name: "LemonFumo"
+    email: "chat@fumolemon.com"
+
 mainSections: ["posts"]
+
+taxonomies:
+  tag: tags
 
 menu:
   main:
-    - name: "归档"
-      url: "archives/"
-      weight: 10
-    - name: "搜索"
-      url: "search/"
-      weight: 20
-    - name: "标签"
-      url: "tags/"
-      weight: 30
     - name: "关于"
       url: "about/"
-      weight: 40
-
-outputs:
-  home:
-    - HTML
-    - RSS
-    - JSON
+      weight: 10
 
 markup:
   goldmark:
@@ -113,4 +65,4 @@ markup:
     noClasses: false
   tableOfContents:
     startLevel: 2
-    endLevel: 4
+    endLevel: 3
