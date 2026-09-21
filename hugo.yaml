@@ -21,14 +21,15 @@ params:
   keywords: ["博客", "随笔", "技术"]
   author: "LemonFumo"
 
-  # 站点图标（放 static/ 下）
+  # 站点图标：纸盒开盖(亮) / 合盖(暗, 由 extend_footer.html 的 JS 切换)
   assets:
-    favicon: "/favicon-32.png"
-    favicon16x16: "/favicon-32.png"
-    favicon32x32: "/favicon-32.png"
+    favicon: "/favicon-open-32.png"
+    favicon16x16: "/favicon-open-32.png"
+    favicon32x32: "/favicon-open-32.png"
     apple_touch_icon: "/apple-touch-icon.png"
+    theme_color: "#F3E7CE"
 
-  # 顶栏左侧站名
+  # 顶栏左侧站名（纸盒 logo, 暗色时换合盖）
   label:
     text: "LemonFumo"
     icon: "/logo.png"

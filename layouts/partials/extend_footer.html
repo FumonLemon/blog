@@ -1,0 +1,52 @@
+{{- /* 纸盒开合联动：明暗切换时换 logo / favicon
+       移植自 E:\mygarden\layouts\_partials\scripts.html
+       适配 PaperMod：用 html[data-theme] (dark/light/auto), 非 .dark 类；
+       auto 模式下 data-theme 不反映实际明暗, 故用 matchMedia 判定。 */ -}}
+<script>
+(() => {
+  const OPEN = '{{ "logo.png" | relURL }}';
+  const CLOSED = '{{ "logo-closed.png" | relURL }}';
+  const FAV_OPEN = '{{ "favicon-open-32.png" | relURL }}';
+  const FAV_CLOSED = '{{ "favicon-closed-32.png" | relURL }}';
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+  // 预载, 切换瞬间不空白
+  [OPEN, CLOSED, FAV_OPEN, FAV_CLOSED].forEach(s => { const i = new Image(); i.src = s; });
+
+  function isDark() {
+    const t = document.documentElement.dataset.theme;
+    if (t === 'dark') return true;
+    if (t === 'light') return false;
+    return mq.matches;   // auto: 跟随系统
+  }
+
+  function swapLogo(dark) {
+    const img = document.querySelector('.logo img, .logo a img, header .logo img');
+    if (!img) return;
+    const want = dark ? CLOSED : OPEN;
+    const cur = new URL(img.getAttribute('src'), location.href).pathname;
+    if (cur === new URL(want, location.href).pathname) return;
+    img.style.transition = 'opacity 0.14s ease';
+    img.style.opacity = '0';
+    setTimeout(() => { img.src = want; img.style.opacity = ''; }, 140);
+  }
+
+  function swapFavicon(dark) {
+    const want = dark ? FAV_CLOSED : FAV_OPEN;
+    document.querySelectorAll('link[rel~="icon"]').forEach(l => {
+      if (new URL(l.href, location.href).pathname !== new URL(want, location.href).pathname) {
+        l.href = want;
+      }
+    });
+  }
+
+  function apply() { const d = isDark(); swapLogo(d); swapFavicon(d); }
+
+  // data-theme 变化(点切换按钮) → 重算
+  new MutationObserver(apply)
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  // 系统偏好变化(auto 模式) → 重算
+  mq.addEventListener('change', apply);
+  apply();
+})();
+</script>

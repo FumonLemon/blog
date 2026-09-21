@@ -1,0 +1,87 @@
+/* 想象盒子 · kraft 纸盒配色，移植到 PaperMod
+   源: E:\mygarden\static\css\kraft.css (venin → PaperMod 变量名映射)
+   加载顺序: 必须在 PaperMod 样式之后, 见 layouts/partials/extend_head.html */
+
+:root {
+  --theme: #F3E7CE;                /* 纸盒内壁米黄(页面底) */
+  --entry: #ECDCBA;                /* 块/卡片底 */
+  --primary: #46352A;              /* 深棕正文/标题 */
+  --secondary: #8A7250;            /* 弱文字 */
+  --tertiary: #D9C49E;             /* 瓦楞分隔 */
+  --content: #46352A;              /* 正文色 */
+  --border: #D9C49E;               /* 边框 */
+  --code-bg: #ECDCBA;              /* 行内代码底 */
+  --code-block-bg: #E5D3AE;        /* 代码块底 */
+  --link-color: #B45309;           /* 琥珀橙链接 */
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --theme: #2B231B;
+  --entry: #352B20;
+  --primary: #E8D8BC;
+  --secondary: #B39B7A;
+  --tertiary: #5C4B37;
+  --content: #E8D8BC;
+  --border: #5C4B37;
+  --code-bg: #352B20;
+  --code-block-bg: #241D16;
+  --link-color: #D98E3F;
+  color-scheme: dark;
+}
+
+/* 跟随系统(after auto): 无 data-theme=dark 时用 media query 兜底 */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    --theme: #2B231B;
+    --entry: #352B20;
+    --primary: #E8D8BC;
+    --secondary: #B39B7A;
+    --tertiary: #5C4B37;
+    --content: #E8D8BC;
+    --border: #5C4B37;
+    --code-bg: #352B20;
+    --code-block-bg: #241D16;
+    --link-color: #D98E3F;
+    color-scheme: dark;
+  }
+}
+
+/* 链接用琥珀色(PaperMod 默认用 --primary) */
+.post-content a, .md-content a, .entry-content a {
+  color: var(--link-color);
+}
+
+/* 主题切换: 颜色 0.45s 淡变 */
+html, body {
+  transition: background-color 0.45s ease, color 0.45s ease;
+}
+
+/* 背景织纹: graph-paper 方格纸(替换 PaperMod 默认纯色底)
+   8x8 迷你 SVG 平铺, 低透明度不抢正文 */
+body {
+  background-color: var(--theme);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M0 0h8v1H0zM0 0v8h1V0z' fill='%238A7250' fill-opacity='0.02'/%3E%3C/svg%3E");
+  background-size: 16px;
+}
+
+:root[data-theme="dark"] body {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M0 0h8v1H0zM0 0v8h1V0z' fill='%23E8D8BC' fill-opacity='0.01'/%3E%3C/svg%3E");
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] body {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M0 0h8v1H0zM0 0v8h1V0z' fill='%23E8D8BC' fill-opacity='0.01'/%3E%3C/svg%3E");
+  }
+}
+
+/* 顶栏 logo: 高锁定, 开/合两图同高切换不跳版 */
+.logo img, .logo a img {
+  height: 35px;
+  width: auto;
+}
+
+/* 深色模式下纸盒图不反色(图本身够亮) */
+:root[data-theme="dark"] .logo img {
+  filter: none;
+}
