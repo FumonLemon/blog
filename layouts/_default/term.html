@@ -1,0 +1,17 @@
+{{ define "main" }}
+<header>{{- partial "header.html" . -}}</header>
+<hr>
+<main>
+    <h2>{{ .Title }}</h2>
+
+    <ul class=blog-posts>
+        {{ range .Pages }}
+        <li>
+            <time datetime={{ .Date.Format "2006-01-02" }}>{{ .Date.Format "2006-01-02" }}</time>
+            <a href={{ .Permalink }}>{{ .Title }}</a>
+        {{ else }}
+            <p>该分类下还没有文章。</p>
+        {{ end }}
+    </ul>
+</main>
+{{ end }}

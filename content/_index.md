@@ -1,15 +1,12 @@
 ---
-title: "你好，我是 LemonFumo"
+title: "LemonFumo"
 ---
+
+## 你好
 
 记录学习、思考与写作。
 
-## 文章
-
-- [查看全部文章](/posts/)
-- [按标签浏览](/tags/)
-
-## 联系我
-
-- GitHub: [FumonLemon](https://github.com/FumonLemon)
-- 邮箱: <chat@fumolemon.com>
+- [归档](/archives/) —— 按时间浏览全部文章
+- [分类](/categories/) —— 按主题归类
+- [标签](/tags/) —— 全部标签
+- [关于](/about/) —— 关于本站

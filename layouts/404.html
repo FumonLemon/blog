@@ -1,0 +1,10 @@
+{{ define "main" }}
+<header>{{- partial "header.html" . -}}</header>
+<hr>
+<main class=not-found>
+    <h1>🏝️</h1>
+    <p><b>404 - NOT FOUND</b></p>
+    <p>这个页面不存在。</p>
+    <p><a href={{ "" | relURL }}>返回首页</a></p>
+</main>
+{{ end }}

@@ -3,6 +3,7 @@ theme: "hugo-bearneo"
 title: "LemonFumo"
 locale: "zh-cn"
 defaultContentLanguage: "zh"
+hasCJKLanguage: true
 
 enableRobotsTXT: true
 buildDrafts: false
@@ -19,50 +20,48 @@ params:
   title: "LemonFumo"
   description: "记录学习、思考与写作。"
   favicon: "favicon.svg"
-  images: ["/apple-touch-icon.png"]
   copyright: "Copyright © 2026, LemonFumo."
   dateFormat: "2006-01-02"
 
-  groupByYear: false
-  showPostCount: false
-  postSearch: true
+  groupByYear: true
   toc: true
   imageZoom: true
-  externalLinksNewTab: true
-
-  upvote: false
-
-  footer:
-    hideCopyright: false
-    hideSitemap: false
-    hideMadeWithLine: false
-    hideRSSAndEmail: false
-
-  RSS:
-    enableRSS: true
-    pageLimit: 20
 
   author:
     name: "LemonFumo"
     email: "chat@fumolemon.com"
 
+  footer:
+    content: "记录学习、思考与写作。"
+
 mainSections: ["posts"]
 
 taxonomies:
+  category: categories
   tag: tags
 
 menu:
   main:
+    - name: "分类"
+      url: "categories/"
+      weight: 10
+    - name: "标签"
+      url: "tags/"
+      weight: 20
+    - name: "归档"
+      url: "archives/"
+      weight: 30
     - name: "关于"
       url: "about/"
-      weight: 10
+      weight: 40
 
 markup:
   goldmark:
     renderer:
       unsafe: true
   highlight:
-    noClasses: false
+    noClasses: true
+    style: "emacs"
   tableOfContents:
     startLevel: 2
     endLevel: 3
