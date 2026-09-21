@@ -1,8 +1,6 @@
 ---
-title: "LemonFumo"
+title: "你好，我是 LemonFumo"
 ---
-
-# 你好，我是 LemonFumo
 
 记录学习、思考与写作。
 
