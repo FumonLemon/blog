@@ -1,67 +1,116 @@
 baseURL: "https://blog.lemonfumo.top/"
-theme: "hugo-bearneo"
 title: "LemonFumo"
+paginate: 10
+theme: "PaperMod"
 locale: "zh-cn"
 defaultContentLanguage: "zh"
-hasCJKLanguage: true
 
 enableRobotsTXT: true
 buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-disableKinds: []
-ignoreErrors: ["error-disable-taxonomy"]
-
-permalinks:
-  page: "/:sections/:slug/"
+minify:
+  disableXML: true
+  minifyOutput: true
 
 params:
+  env: production
   title: "LemonFumo"
   description: "记录学习、思考与写作。"
-  favicon: "favicon.svg"
-  copyright: "Copyright © 2026, LemonFumo."
-  dateFormat: "2006-01-02"
+  keywords: ["博客", "随笔", "技术"]
+  author: "LemonFumo"
 
-  groupByYear: true
-  toc: true
-  imageZoom: true
+  # 站点图标（放 static/ 下）
+  assets:
+    favicon: "/favicon-32.png"
+    favicon16x16: "/favicon-32.png"
+    favicon32x32: "/favicon-32.png"
+    apple_touch_icon: "/apple-touch-icon.png"
 
-  author:
-    name: "LemonFumo"
-    email: "chat@fumolemon.com"
+  # 顶栏左侧站名
+  label:
+    text: "LemonFumo"
+    icon: "/logo.png"
+    iconHeight: 35
 
+  # 首页个人介绍卡（homeInfoParams）
+  homeInfoParams:
+    Title: "你好，我是 LemonFumo"
+    Content: >
+      记录学习、思考与写作。
+
+  # 社交图标
+  socialIcons:
+    - name: github
+      url: "https://github.com/FumonLemon"
+    - name: email
+      url: "mailto:chat@fumolemon.com"
+    - name: rss
+      url: "/index.xml"
+
+  # 文章正文目录
+  ShowToc: true
+  TocOpen: false
+
+  # 主题外观：auto（跟随系统）/ light / dark
+  defaultTheme: auto
+  disableThemeToggle: false
+
+  # 文章列表显示
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: false
+  ShowRssButtonInSectionTermList: true
+  ShowFullTextinRSS: false
+
+  # 搜索
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+  # 页脚
   footer:
-    content: "记录学习、思考与写作。"
+    hideCopyright: false
 
+# 主要 section（列表页聚合哪些内容）
 mainSections: ["posts"]
-
-taxonomies:
-  category: categories
-  tag: tags
 
 menu:
   main:
-    - name: "分类"
-      url: "categories/"
-      weight: 10
-    - name: "标签"
-      url: "tags/"
-      weight: 20
     - name: "归档"
       url: "archives/"
+      weight: 10
+    - name: "搜索"
+      url: "search/"
+      weight: 20
+    - name: "标签"
+      url: "tags/"
       weight: 30
     - name: "关于"
       url: "about/"
       weight: 40
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
 
 markup:
   goldmark:
     renderer:
       unsafe: true
   highlight:
-    noClasses: true
-    style: "emacs"
+    noClasses: false
   tableOfContents:
     startLevel: 2
-    endLevel: 3
+    endLevel: 4

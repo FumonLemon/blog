@@ -7,7 +7,7 @@ categories: ["随笔"]
 summary: "这是本博客的第一篇文章。"
 ---
 
-这是本博客的第一篇文章。
+这是用 Hugo + PaperMod 搭建的博客的第一篇文章。
 
 ## 二级标题
 
@@ -29,5 +29,5 @@ def greet(name: str) -> str:
 
 | 项目 | 说明 |
 | --- | --- |
+| 主题 | PaperMod |
 | 生成器 | Hugo |
-| 风格 | 终端风 · 极简 |
