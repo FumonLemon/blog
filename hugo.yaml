@@ -18,8 +18,8 @@ permalinks:
 params:
   title: "LemonFumo"
   description: "记录学习、思考与写作。"
-  favicon: "/logo.png"
-  images: ["/logo.png"]
+  favicon: "favicon.svg"
+  images: ["/apple-touch-icon.png"]
   copyright: "Copyright © 2026, LemonFumo."
   dateFormat: "2006-01-02"
 
