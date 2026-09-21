@@ -3,7 +3,7 @@
   {{ if .Data.Singular }}
   <h3 style="margin-bottom:0">筛选「{{ .Title }}」</h3>
   <small>
-    <a href="{{ "tags" | relURL }}">取消筛选</a>
+    <a href="{{ "tags/" | relURL }}">取消筛选</a>
   </small>
   {{ end }}
   {{ if .Site.Params.postSearch }}
